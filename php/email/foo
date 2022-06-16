@@ -1,0 +1,9 @@
+MX rcpt respond error: lja@lja.fi: 1
+target_email_name   found: aergergagega
+target_email_domain found: lja.fi
+MX record found: lja.fi
+MX lja.fi ( 213.216.205.177 ) connected....
+MX HELO done to lja.fi ( 213.216.205.177 )....
+MX MailFrom done to lja.fi ( 213.216.205.177 )....
+MX rcpt respond error: aergergagega@lja.fi: Invalid response code received from server
+LJA2 OK
