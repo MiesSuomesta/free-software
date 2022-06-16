@@ -1,3 +1,6 @@
+# Copyleft (2022) Lauri Jakku <lja@lja.fi>
+# Lisence: GPL-3.0
+#
 # free-software
 C++: 
 	template_helpers.h:
