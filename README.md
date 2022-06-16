@@ -1,7 +1,11 @@
+#
 # Copyleft (2022) Lauri Jakku <lja@lja.fi>
 # Lisence: GPL-3.0
 #
-# free-software
+# If you use this, please give me credit by putting my name and email address somewhere visible.
+# Thank You!
+#
+
 C++: 
 	template_helpers.h:
 
