@@ -1,5 +1,5 @@
---- formatting.php	2022-05-29 19:46:24.055716781 +0300
-+++ formatting.php	2022-06-16 18:12:17.134991646 +0300
+--- formatting.php	2022-06-16 19:09:19.799012267 +0300
++++ formatting.php	2022-06-16 19:07:15.005518371 +0300
 @@ -7,6 +7,10 @@
   * @package WordPress
   */
@@ -16,9 +16,9 @@
  	}
  
 +	/*LJA Additions ------------------------------------------------------------------*/
-+	if ( ! lja_is_email_valid($email) )
++	if ( ! \PHPMailer\PHPMailer\lja_is_email_valid($email) )
 +	{
-+		return apply_filters( 'is_email', false, $email, 'domain_period_sequence' );
++		return apply_filters( 'is_email', false, $email, 'fake_email_address' );
 +	}
 +	/*LJA Additions ------------------------------------------------------------------*/
 +

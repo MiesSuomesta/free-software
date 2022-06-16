@@ -1,5 +1,9 @@
 <?php
 
+namespace PHPMailer\PHPMailer;
+
+require_once __DIR__ . '/PHPMailer/SMTP.php';
+
 function lja_getip($target)
 {
 	return gethostbyname($target);
@@ -10,8 +14,8 @@ function lja_mailer_raw_check_email($targetaddress, $verbose = 0)
 
 	$the_hostname = gethostname();
 	$target_components = explode('@', $targetaddress, 2);
- 	$target_email_name   = $target_components[0];
- 	$target_email_domain = $target_components[1];
+	$target_email_name   = $target_components[0];
+	$target_email_domain = $target_components[1];
 
 	if ($verbose > 0)
 		error_log("target_email_name   found: $target_email_name\n");
@@ -73,7 +77,7 @@ function lja_mailer_raw_check_email($targetaddress, $verbose = 0)
 		error_log("MX MailFrom done to $target_domain_mx ( $target_domain_mx_ip )....\n");
 	
 	$rcpt = $smtp->recipient($targetaddress);
-	if ( ! is_int($rcpt) ) 
+	if ( $rcpt != 1 ) 
 	{
 		error_log("MX recipient respond error: $targetaddress: $rcpt\n");
 		return false;
@@ -82,7 +86,11 @@ function lja_mailer_raw_check_email($targetaddress, $verbose = 0)
 	if ($verbose > 0)
 		error_log("MX rcptTo done to $targetaddress....\n");
 
-	$smtp->disconnect();
+	$smtp->close();
+	
+	if ($verbose > 0)
+		error_log("MX connection closed....\n");
+	
 	return true;
 }
 
@@ -97,11 +105,11 @@ function lja_mailer_check_email($targetaddress, $ver)
 	}
 }
 
+
 function lja_is_email_valid($email)
 {
-        error_log("LJA: " . $email);
-        $rv = lja_mailer_check_email($user_email, true);
-	error_log("LJA check: " . $email .": $rv");
+        $rv = lja_mailer_check_email($email, true);
+	error_log("LJA email check: " . $email .": $rv");
         return $rv;
 }
 
