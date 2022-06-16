@@ -3,8 +3,10 @@
 # Lisence: GPL-3.0
 #
 # If you use this, please give me credit by putting my name and email address somewhere visible.
-# Thank You!
 #
+# Thank You! 
+#
+# -- lja
 
 C++: 
 	template_helpers.h:
