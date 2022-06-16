@@ -34,4 +34,18 @@ Python3:
 						list of OK or NOK
 
 
+PHP:
+
+	wordpress/
+		wordpress_email_checker.php
+		wordpress_email_checker.patch
+
+			USAGE: 
+
+				cd <WP_ROOT>/wp-include
+				patch -p0 < wordpress_email_checker.patch
+
+				cp wordpress_email_checker.php <WP_ROOT>/wp-include
+
+
 Happy coding....
