@@ -1,6 +1,6 @@
 #
 # Copyleft (2022) Lauri Jakku <lja@lja.fi>
-# Lisence: GPL-3.0
+# Lisence: GPL-2.0
 #
 # If you use this, please give me credit by putting my name and email address somewhere visible.
 #
