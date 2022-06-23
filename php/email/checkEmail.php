@@ -16,6 +16,8 @@ function log_print($msgs)
 	
 	foreach ($parr as $pstr)
 	{
+		$pstr = trim($pstr);
+		$pstr = rtrim($pstr);
 		//print($pstr);
 		error_log($pstr, 0);
 	}
