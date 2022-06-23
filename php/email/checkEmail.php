@@ -17,6 +17,9 @@ function lja_log_print($msgs)
 	{
 		$pstr = trim($pstr);
 		$pstr = rtrim($pstr);
+		
+		$pstr = $pstr . "\n"; /* BUG FIX: The line-end needed otherwise messed up log */
+		
 		//print($pstr);
 		error_log($pstr, 0);
 	}
