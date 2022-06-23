@@ -1,14 +1,13 @@
 <?php
 
 require_once "Net/SMTP.php";
-	//require("SMTP");
 
 function lja_email_checker_getip($target)
 {
 	return gethostbyname($target);
 }
 
-function log_print($msgs)
+function lja_log_print($msgs)
 {
 	$parr = $msgs;
 	if (! is_array($msgs) )
@@ -28,13 +27,15 @@ function lja_email_checker_handle_return_value_messaging($rv, $msgError , $msgOk
 {
 	if ($rv) {
 		if ($msgVerbose) {
-			log_print($msgOk);
+			lja_log_print($msgOk);
+			if ($print_error) {
+				lja_log_print($given_rv);
+			}
 		}
 	} else {
-		log_print($msgError);
+		lja_log_print($msgError);
 		if ($print_error) {
-			log_print($given_rv);
-			log_print($given_rv, 0);
+			lja_log_print($given_rv);
 		}
 	}
 }
