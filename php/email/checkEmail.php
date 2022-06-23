@@ -186,7 +186,9 @@ function lja_email_checker_check_email($targetaddress, $ver)
 		return lja_email_checker_raw_check_email($targetaddress, $ver);
 	} catch (Exception $e)
 	{
+		
 		print($e);
+		error_log($e);
 		return false;
 	}
 }
