@@ -19,7 +19,6 @@ function lja_log_print($msgs)
 		$pstr = rtrim($pstr);
 		//print($pstr);
 		error_log($pstr, 0);
-		sleep(0.01);
 	}
 	
 }
@@ -161,7 +160,7 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
 	$conn_from = "Connecting from : $the_hostname ($the_hostname_ip)";
 	$conn_to   = "Connecting to   : $target_domain_mx ($target_domain_mx_ip)";
 	$conn_mx   = "MX $target_domain_mx ( $target_domain_mx_ip ) connected....";
-	$msgOK     = "$conn_from$conn_to$conn_mx";
+	$msgOK     = "$conn_from\n$conn_to\n$conn_mx";
 	$msgError  = "Connect failed to: $target_domain_mx ($target_domain_mx_ip)";
 	$the_rv = lja_email_checker_handle_return_value_ok(	$rv, 
 								1, 
