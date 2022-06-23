@@ -8,21 +8,31 @@ function lja_email_checker_getip($target)
 	return gethostbyname($target);
 }
 
+function log_print($msgs)
+{
+	$parr = $msgs
+	if (! is_array($msgs) )
+		$parr = explode("\n", $msgs);
+	
+	foreach ($pstr in $parr)
+	{
+		print($pstr);
+		error_log($pstr, 0);
+	}
+	
+}
 
 function lja_email_checker_handle_return_value_messaging($rv, $msgError , $msgOk, $msgVerbose, $print_error, $given_rv)
 {
 	if ($rv) {
 		if ($msgVerbose) {
-			print($msgOk);
-			error_log($msgOk, 0);
+			log_print($msgOk);
 		}
 	} else {
-		print($msgError);
-		error_log($msgError, 0);
+		log_print($msgError);
 		if ($print_error) {
-			print("\nError ----------------------------------\n");
-			print_r($given_rv);
-			error_log($given_rv, 0);
+			log_print($given_rv);
+			log_print($given_rv, 0);
 		}
 	}
 }
