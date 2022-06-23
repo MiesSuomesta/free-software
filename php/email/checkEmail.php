@@ -101,7 +101,7 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
 
 	if ( is_bool($target_dns_get_record) )
 	{
-		print("MX record not found (Check 1)\n");
+		lja_log_print("MX record not found (Check 1)\n");
 		return false;
 	}
 	
@@ -109,7 +109,7 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
 
 	if (! array_key_exists(0, $target_dns_get_record) )
 	{
-		print("MX record not found (Check 2)\n");
+		lja_log_print("MX record not found (Check 2)\n");
 		return false;
 	}
 
@@ -117,7 +117,7 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
 	
 	if (! array_key_exists('host', $target_domain_rec) )
 	{
-		print("MX record not found (Check 3)\n");
+		lja_log_print("MX record not found (Check 3)\n");
 		return false;
 	}
 	
@@ -222,9 +222,7 @@ function lja_email_checker_check_email($targetaddress, $ver)
 		return lja_email_checker_raw_check_email($targetaddress, $ver);
 	} catch (Exception $e)
 	{
-		
-		print($e);
-		error_log($e);
+		lja_log_print($e);
 		return false;
 	}
 }
