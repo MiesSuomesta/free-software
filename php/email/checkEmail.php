@@ -55,6 +55,36 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
  	$target_email_name   = $target_components[0];
  	$target_email_domain = $target_components[1];
 
+	/* email lenght check */
+	$msgName     = "Email user  : $target_email_name";
+	$msgDomain   = "Email domain: $target_email_domain";
+	
+	$uOK = strlen($target_email_name) > 1;
+	$dOK = strlen($target_email_domain) > 2;
+	
+	$rv = $uOK && $dOK;
+	
+	if ($uOK)
+		$uOK = "OK";
+	else
+		$uOK = "NOK";
+	
+	if ($dOK)
+		$dOK = "OK";
+	else
+		$dOK = "NOK";
+	
+	$msgOK     = "Email to properly check:\n$msgName\n$msgDomain\n";
+	$msgError  = "Email not ok:\n$msgName ($uOK) $msgDomain ($uOK)";
+	$the_rv = lja_email_checker_handle_return_value_ok(	$rv, 
+								True, 
+								$msgError,
+								$msgOK,
+								$verbose,
+								$print_error);
+	if ( $the_rv == False )	return false;
+
+
 	if ($verbose > 0)
 		print("target_email_name   found: $target_email_name\n");
 
