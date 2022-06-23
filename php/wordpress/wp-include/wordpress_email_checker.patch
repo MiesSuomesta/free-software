@@ -16,9 +16,9 @@
  	}
  
 +	/*LJA Additions ------------------------------------------------------------------*/
-+	if ( ! \PHPMailer\PHPMailer\lja_is_email_valid($email) )
++	if ( ! lja_is_email_valid($email) )
 +	{
-+		return apply_filters( 'is_email', false, $email, 'fake_email_address' );
++		return false;
 +	}
 +	/*LJA Additions ------------------------------------------------------------------*/
 +
