@@ -1,6 +1,6 @@
 <?php
-namespace PHPMailer\PHPMailer;
-include_once __DIR__ . '/PHPMailer/SMTP.php';
+
+require_once "Net/SMTP.php";
 	//require("SMTP");
 
 function lja_email_checker_getip($target)
@@ -192,7 +192,7 @@ function lja_email_checker_check_email($targetaddress, $ver)
 }
 
 // Should fail
-//lja_email_checker_check_email("lja@lja.fi", True);
-//lja_email_checker_check_email("uhxndfrgrpt@m142.store", True);
+lja_email_checker_check_email("lja@lja.fi", True);
+lja_email_checker_check_email("uhxndfrgrpt@m142.store", True);
 
 ?>
