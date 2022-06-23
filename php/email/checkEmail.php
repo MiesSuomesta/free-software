@@ -87,8 +87,8 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
 	else
 		$dOK = "NOK";
 	
-	$msgOK     = "Email to properly check:\n$msgName\n$msgDomain\n";
-	$msgError  = "Email not ok:\n$msgName ($uOK) $msgDomain ($uOK)";
+	$msgOK     = "Email to properly check:\n$msgName\n$msgDomain";
+	$msgError  = "Email not ok:\n$msgName ($uOK)\n$msgDomain ($uOK)";
 	$the_rv = lja_email_checker_handle_return_value_ok(	$rv, 
 								True, 
 								$msgError,
@@ -96,13 +96,6 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
 								$verbose,
 								$print_error);
 	if ( $the_rv == False )	return false;
-
-
-	if ($verbose > 0)
-		print("target_email_name   found: $target_email_name\n");
-
-	if ($verbose > 0)
-		print("target_email_domain found: $target_email_domain\n");
 
 	$target_dns_get_record = dns_get_record($target_email_domain, DNS_MX);
 
@@ -135,8 +128,8 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
 	//print_r($target_domain_mx_ip);
 
 	/* MX Record check */
-	$msgOK    = "MX record has no IP: $target_domain_mx\n";
-	$msgError = "MX record found: $target_domain_mx ($target_domain_mx_ip)\n";
+	$msgOK    = "MX record has no IP: $target_domain_mx";
+	$msgError = "MX record found: $target_domain_mx ($target_domain_mx_ip)";
 	$the_rv = lja_email_checker_handle_return_value_ok(	$target_domain_mx_ip,
 								False, 
 								$msgError,
@@ -149,8 +142,8 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
 	$the_hostname_ip = lja_email_checker_getip($the_hostname);
 
 	/* Hostname IP check */
-	$msgOK     = "Hostname IP check FAIL: $the_hostname\n";
-	$msgError  = "Hostname IP check OK: $the_hostname ($the_hostname_ip)\n";
+	$msgOK     = "Hostname IP check FAIL: $the_hostname";
+	$msgError  = "Hostname IP check OK: $the_hostname ($the_hostname_ip)";
 	$the_rv = lja_email_checker_handle_return_value_ok(	$the_hostname_ip, 
 								False, 
 								$msgError,
@@ -164,11 +157,11 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
 
 	/* Connection check */
 	$rv = $smtp->connect();
-	$conn_from = "Connecting from : $the_hostname ($the_hostname_ip)\n";
-	$conn_to   = "Connecting to   : $target_domain_mx ($target_domain_mx_ip)\n";
-	$conn_mx   = "MX $target_domain_mx ( $target_domain_mx_ip ) connected....\n";
+	$conn_from = "Connecting from : $the_hostname ($the_hostname_ip)";
+	$conn_to   = "Connecting to   : $target_domain_mx ($target_domain_mx_ip)";
+	$conn_mx   = "MX $target_domain_mx ( $target_domain_mx_ip ) connected....";
 	$msgOK     = "$conn_from$conn_to$conn_mx";
-	$msgError  = "Connect failed to: $target_domain_mx ($target_domain_mx_ip)\n";
+	$msgError  = "Connect failed to: $target_domain_mx ($target_domain_mx_ip)";
 	$the_rv = lja_email_checker_handle_return_value_ok(	$rv, 
 								1, 
 								$msgError,
@@ -181,8 +174,8 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
 	$rv = $smtp->helo($the_hostname_ip);
 
 	/* HELO check */
-	$msgOK     = "MX HELO done to $target_domain_mx ( $target_domain_mx_ip ) as $the_hostname( $the_hostname_ip )....\n";
-	$msgError  = "MX HELO respond error: $the_hostname( $the_hostname_ip )\n";
+	$msgOK     = "MX HELO done to $target_domain_mx ( $target_domain_mx_ip ) as $the_hostname( $the_hostname_ip )....";
+	$msgError  = "MX HELO respond error: $the_hostname( $the_hostname_ip )";
 	$the_rv = lja_email_checker_handle_return_value_ok(	$rv, 
 								1, 
 								$msgError,
@@ -195,8 +188,8 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
 	$rv = $smtp->mailFrom("noname@foo.bar");
 
 	/* mailFrom check */
-	$msgOK     = "MX mailFrom done to $target_domain_mx ( $target_domain_mx_ip ) as $the_hostname( $the_hostname_ip )....\n";
-	$msgError  = "MX mailFrom respond error: $the_hostname( $the_hostname_ip )\n";
+	$msgOK     = "MX mailFrom done to $target_domain_mx ( $target_domain_mx_ip ) as $the_hostname( $the_hostname_ip )....";
+	$msgError  = "MX mailFrom respond error: $the_hostname( $the_hostname_ip )";
 	$the_rv = lja_email_checker_handle_return_value_ok(	$rv, 
 								1, 
 								$msgError,
@@ -209,7 +202,7 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
 	$rv = $smtp->rcptTo($targetaddress);
 
 	/* mailFrom check */
-	$msgOK     = "MX rcpt respond done to $target_domain_mx ( $target_domain_mx_ip ), email $targetaddress is valid ....\n";
+	$msgOK     = "MX rcpt respond done to $target_domain_mx ( $target_domain_mx_ip ), email $targetaddress is valid ....";
 	$msgError  = "MX rcpt respond error: $targetaddress";
 	$the_rv = lja_email_checker_handle_return_value_ok(	$rv, 
 								1, 
