@@ -1,16 +1,5 @@
 <?php
 
-namespace PHPMailer\PHPMailer;
-
-require_once __DIR__ . '/PHPMailer/SMTP.php';
-
-include_once("checkEmail.php");
-
-function lja_getip($target)
-{
-	return lja_email_checker_getip($target);
-}
-
 function lja_mailer_raw_check_email($targetaddress, $verbose = 0)
 {
 	return lja_email_checker_raw_check_email($targetaddress, $verbose); 

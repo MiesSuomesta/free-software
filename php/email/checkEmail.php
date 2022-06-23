@@ -13,12 +13,15 @@ function lja_email_checker_handle_return_value_messaging($rv, $msgError , $msgOk
 	if ($rv) {
 		if ($msgVerbose) {
 			print($msgOk);
+			error_log($msgOk, 0);
 		}
 	} else {
 		print($msgError);
+		error_log($msgError, 0);
 		if ($print_error) {
 			print("\nError ----------------------------------\n");
 			print_r($given_rv);
+			error_log($given_rv, 0);
 		}
 	}
 }
@@ -72,7 +75,8 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
 	/* MX Record check */
 	$msgOK    = "MX record has no IP: $target_domain_mx\n";
 	$msgError = "MX record found: $target_domain_mx ($target_domain_mx_ip)\n";
-	$the_rv = lja_email_checker_handle_return_value_ok($target_domain_mx_ip, False, 
+	$the_rv = lja_email_checker_handle_return_value_ok(	$target_domain_mx_ip,
+								False, 
 								$msgError,
 								$msgOK,
 								$verbose,
