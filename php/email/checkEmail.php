@@ -10,7 +10,7 @@ function lja_email_checker_getip($target)
 
 function log_print($msgs)
 {
-	$parr = $msgs
+	$parr = $msgs;
 	if (! is_array($msgs) )
 		$parr = explode("\n", $msgs);
 	
