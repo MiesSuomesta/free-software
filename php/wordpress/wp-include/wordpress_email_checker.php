@@ -1,5 +1,7 @@
 <?php
 
+namespace \PHPMailer\PHPMailer;
+
 include_once("checkEmail.php");
 
 function lja_mailer_raw_check_email($targetaddress, $verbose = 0)
@@ -26,6 +28,6 @@ function lja_is_email_valid($email)
         return $rv;
 }
 
-lja_is_email_valid("aergaerg@argaerg.gi");
-lja_is_email_valid("aergaerg@lja.fi");
+//lja_is_email_valid("aergaerg@argaerg.gi");
+//lja_is_email_valid("aergaerg@lja.fi");
 ?>
