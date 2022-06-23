@@ -43,14 +43,14 @@ function raw_check_email($targetaddress, $verbose = 0)
 	//print_r($connect);
 	if ( ! $rv ) 
 	{
-		print("MX connect respond error: $the_hostname( $the_hostname_ip ): $rv\n");
+		print("MX connect respond error: $the_hostname( $the_hostname_ip )\n");
 		return false;
 	}
 	if ($verbose > 0)
 		print("MX $target_domain_mx ( $target_domain_mx_ip ) connected....\n");
 	
 	$rv = $smtp->helo($the_hostname_ip);
-	//print_r($helo);
+	//print_r($rv);
 	if ( ! $rv ) 
 	{
 		print("MX helo respond error: $the_hostname( $the_hostname_ip ): $rv\n");
@@ -60,11 +60,11 @@ function raw_check_email($targetaddress, $verbose = 0)
 		print("MX HELO done to $target_domain_mx ( $target_domain_mx_ip )....\n");
 
 	$rv = $smtp->mailFrom("noname@foo.bar");
-	//print_r($helo);
-	if ( $rv != 1) 
+	//print_r($rv);
+	if ( !( is_int($rv) && ($rv == 1) ) ) 
 	{
 		print("MX mail respond error: $the_hostname( $the_hostname_ip )\n");
-		print_r($rv);
+		//print_r($rv);
 		return false;
 	}
 
@@ -96,5 +96,7 @@ function check_email($targetaddress, $ver)
 	}
 }
 
+// Should fail
+//check_email("uhxndfrgrpt@m142.store", True);
 
 ?>

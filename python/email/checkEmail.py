@@ -11,7 +11,7 @@ def check_email(targetaddress):
 	targetaddress = str(targetaddress)
 
 	# Syntax check
-	syntax_valid_email = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', targetaddress)
+	syntax_valid_email = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,10})$', targetaddress)
 
 	if syntax_valid_email == None:
 		print(f'Validation error: Syntax is bad (targetaddress)')
