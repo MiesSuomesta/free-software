@@ -60,15 +60,33 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
 	if ($verbose > 0)
 		print("target_email_domain found: $target_email_domain\n");
 
-	$target_dns_get_record = dns_get_record($target_email_domain, DNS_MX)[0];
+	$target_dns_get_record = dns_get_record($target_email_domain, DNS_MX);
 
-	if ( ! $target_dns_get_record )
+	if ( is_bool($target_dns_get_record) )
 	{
-		print("MX record not found: $target_dns_get_record\n");
+		print("MX record not found (Check 1)\n");
+		return false;
+	}
+	
+	
+
+	if (! array_key_exists(0, $target_dns_get_record) )
+	{
+		print("MX record not found (Check 2)\n");
 		return false;
 	}
 
-	$target_domain_mx = $target_dns_get_record['host'];
+	$target_domain_rec = $target_dns_get_record[0];
+	
+	if (! array_key_exists('host', $target_domain_rec) )
+	{
+		print("MX record not found (Check 3)\n");
+		return false;
+	}
+	
+	//print_r($target_dns_get_record);
+	
+	$target_domain_mx = $target_domain_rec['host'];
 	$target_domain_mx_ip = lja_email_checker_getip($target_domain_mx);
 	//print_r($target_domain_mx_ip);
 
