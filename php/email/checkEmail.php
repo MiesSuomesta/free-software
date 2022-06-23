@@ -14,7 +14,7 @@ function log_print($msgs)
 	if (! is_array($msgs) )
 		$parr = explode("\n", $msgs);
 	
-	foreach ($pstr in $parr)
+	foreach ($parr as $pstr)
 	{
 		print($pstr);
 		error_log($pstr, 0);
