@@ -192,7 +192,7 @@ function lja_email_checker_check_email($targetaddress, $ver)
 }
 
 // Should fail
-lja_email_checker_check_email("lja@lja.fi", True);
-lja_email_checker_check_email("uhxndfrgrpt@m142.store", True);
+//lja_email_checker_check_email("lja@lja.fi", True);
+//lja_email_checker_check_email("uhxndfrgrpt@m142.store", True);
 
 ?>

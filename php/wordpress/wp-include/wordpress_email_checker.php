@@ -4,7 +4,7 @@ include_once("checkEmail.php");
 
 function lja_mailer_raw_check_email($targetaddress, $verbose = 0)
 {
-	return \PHPMailer\PHPMailer\lja_email_checker_raw_check_email($targetaddress, $verbose); 
+	return lja_email_checker_raw_check_email($targetaddress, $verbose); 
 }
 
 function lja_mailer_check_email($targetaddress, $ver)
