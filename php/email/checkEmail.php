@@ -1,8 +1,6 @@
 <?php
 namespace PHPMailer\PHPMailer;
 include_once __DIR__ . '/PHPMailer/SMTP.php';
-
-require_once "Net/SMTP.php";
 	//require("SMTP");
 
 function lja_email_checker_getip($target)
