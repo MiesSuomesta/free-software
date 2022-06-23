@@ -72,8 +72,8 @@ function lja_email_checker_raw_check_email($targetaddress, $verbose = False, $pr
 	$msgName     = "Email user  : $target_email_name";
 	$msgDomain   = "Email domain: $target_email_domain";
 	
-	$uOK = strlen($target_email_name) > 1;
-	$dOK = strlen($target_email_domain) > 2;
+	$uOK = strlen($target_email_name) > 0;
+	$dOK = strlen($target_email_domain) > 1;
 	
 	$rv = $uOK && $dOK;
 	
