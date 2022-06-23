@@ -16,7 +16,7 @@ function log_print($msgs)
 	
 	foreach ($parr as $pstr)
 	{
-		print($pstr);
+		//print($pstr);
 		error_log($pstr, 0);
 	}
 	
