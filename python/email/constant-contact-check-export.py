@@ -105,6 +105,7 @@ def parse_cc_and_print(exporttifile):
     emailIdx        = titlet['EmailAddress'];
     FirstNameIdx    = titlet['FirstName'];
     LastNameIdx     = titlet['LastName'];
+    rv = [];
 
     for value_array in arvot:
     
@@ -124,13 +125,21 @@ def parse_cc_and_print(exporttifile):
             append_to_valid(exporttifile, value_array)
             ok = "OK"
         print(f'`----> Status: {ok}')
+        rv.append([emaili, ok])
 
+    for values in rv:
+        ve = values[0];
+        va = values[1];
+        print(f"{ve}: {va}")
+    
 
 #try:
 
 if len(sys.argv) > 2:
     for exporttifile in sys.argv[1:]:
         parse_cc_and_print(exporttifile)
+
+
 else:
     parse_cc_and_print(sys.argv[1])
 #try:
