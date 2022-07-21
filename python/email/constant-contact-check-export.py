@@ -91,7 +91,7 @@ def parse_cc_cvs(inputfile):
 #CreatedOn,ModifiedOn,FirstName,LastName,Phone,CompanyName,JobTitle,EmailAddress,Source,OptIn,OptOut,OptInBy,OptOutBy
 
 def append_to_valid(exporttifile, value_array):
-    outputfile = exporttifile + ".valid"
+    outputfile = exporttifile + ".valid.csv"
     dline = ",".join(value_array)
     with open(outputfile, "a+") as f:
         f.write(dline)
@@ -112,9 +112,12 @@ def parse_cc_and_print(exporttifile):
         if len(value_array) < 1:
             break;
     
-        emaili = value_array[emailIdx]
-        enimi  = value_array[FirstNameIdx]
-        snimi  = value_array[LastNameIdx]
+        try:
+           emaili = value_array[emailIdx]
+           enimi  = value_array[FirstNameIdx]
+           snimi  = value_array[LastNameIdx]
+        except Exception as e:
+           continue
 
         print(f',---- Email of {enimi} {snimi} <{emaili}> --------------------')
 
@@ -127,6 +130,7 @@ def parse_cc_and_print(exporttifile):
         print(f'`----> Status: {ok}')
         rv.append([emaili, ok])
 
+    print("Summary:");
     for values in rv:
         ve = values[0];
         va = values[1];
