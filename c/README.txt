@@ -1,9 +1,10 @@
 To build:
 
-   gcc sniffbits.c -o sniffbits
+    gcc bitmatch.c -o bitmatch
 
 Then to use:
-
-	echo "stream input" | ./sniffbits f8c 11 || echo not found
+	
+	echo "h>0?" | ./bitmatch f8c 11 || echo not found
+	echo "h<0?" | ./bitmatch f8c 11 || echo not found
 
 
