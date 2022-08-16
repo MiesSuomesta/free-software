@@ -285,12 +285,26 @@ int main(int argc, char *argv[])
 	unsigned long long int input_target =0;
 	unsigned long long int input_target_bits = 0;
 	unsigned long long int input_target_rev = 0;
+	char *pStart = argv[1];
+	int ok = 1;
+	unsigned int hex_len_left_to_process = strlen(pStart);
 
-    
-	input_target 		= strtoll(argv[1], NULL, 16);
 	input_target_bits 	= strtoll(argv[2], NULL, 0);
 
-    int ok = scan_at_input(input_target, input_target_bits);
+	while ( hex_len_left_to_process > 0 )
+	{
+		unsigned int hex_len = strlen(pStart);
+
+		if ( hex_len > 8 )
+			hex_len = 8;
+
+		 hex_len_left_to_process -= hex_len;
+
+		input_target 		= strtoll(pStart, NULL, 16);
+		ok += scan_at_input(input_target, input_target_bits);
+		pStart += hex_len;
+	}
+
     dbg("Found %d times.", ok);
     return (ok == 0);
 
